@@ -45,7 +45,7 @@ public class BluetoothBroadcastReceiverTest {
     }
 
     @Test
-    public void shouldNotNotifyWhenBluetoothDeviceHasBeenDisconnected() throws Exception {
+    public void shouldNotNotifyWhenBluetoothDeviceHasBeenConnected() throws Exception {
         // given
         when(intent.getAction()).thenReturn(BluetoothDevice.ACTION_ACL_CONNECTED);
         // when
