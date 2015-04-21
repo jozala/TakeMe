@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">TakeMe</string>
+    <string name="app_name_full">TakeMe with you!</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
