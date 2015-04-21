@@ -9,11 +9,14 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
+import pl.aetas.takeme.BuildConfig;
 import pl.aetas.takeme.notificator.MainNotificator;
 
 import static org.mockito.Mockito.*;
 
 @RunWith(RobolectricTestRunner.class)
+@Config(constants = BuildConfig.class, manifest = Config.NONE)
 public class BluetoothBroadcastReceiverTest {
 
     private BluetoothBroadcastReceiver bluetoothBroadcastReceiver;
