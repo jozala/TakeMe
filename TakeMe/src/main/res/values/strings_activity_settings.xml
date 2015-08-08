@@ -25,5 +25,8 @@
         <item>sound_2</item>
         <item>sound_3</item>
     </string-array>
+    <string name="pref_title_screen_notification_enabled">Switch on screen as notification</string>
+    <string name="pref_screen_notification_enabled_desc">Screen will be turned on for notification</string>
+    <string name="pref_screen_notification_disabled_desc">Screen will NOT be turned on for notification</string>
 
 </resources>

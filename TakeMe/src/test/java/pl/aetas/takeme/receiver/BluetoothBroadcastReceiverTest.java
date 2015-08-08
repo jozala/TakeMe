@@ -11,7 +11,7 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import pl.aetas.takeme.BuildConfig;
-import pl.aetas.takeme.notificator.MainNotificator;
+import pl.aetas.takeme.notificator.Notificator;
 
 import static org.mockito.Mockito.*;
 
@@ -29,22 +29,14 @@ public class BluetoothBroadcastReceiverTest {
     private Intent intent;
 
     @Mock
-    private MainNotificator notificator;
+    private Notificator notificator1;
+    @Mock
+    private Notificator notificator2;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        bluetoothBroadcastReceiver = new BluetoothBroadcastReceiver(notificator);
-    }
-
-    @Test
-    public void shouldNotifyThroughNotifierWhenBluetoothDeviceIsDisconnected() throws Exception {
-        // given
-        when(intent.getAction()).thenReturn(BluetoothDevice.ACTION_ACL_DISCONNECTED);
-        // when
-        bluetoothBroadcastReceiver.onReceive(context, intent);
-        // then
-        verify(notificator).bluetoothDeviceDisconnected(context);
+        bluetoothBroadcastReceiver = new BluetoothBroadcastReceiver(notificator1);
     }
 
     @Test
@@ -54,6 +46,18 @@ public class BluetoothBroadcastReceiverTest {
         // when
         bluetoothBroadcastReceiver.onReceive(context, intent);
         // then
-        verify(notificator, never()).bluetoothDeviceDisconnected(context);
+        verify(notificator1, never()).bluetoothDeviceDisconnected(context);
+    }
+
+    @Test
+    public void shouldNotifyThroughAllRegisteredNotifiersWhenBluetoothDeviceIsDisconnected() {
+        // given
+        bluetoothBroadcastReceiver = new BluetoothBroadcastReceiver(notificator1, notificator2);
+        when(intent.getAction()).thenReturn(BluetoothDevice.ACTION_ACL_DISCONNECTED);
+        // when
+        bluetoothBroadcastReceiver.onReceive(context, intent);
+        // then
+        verify(notificator1).bluetoothDeviceDisconnected(context);
+        verify(notificator2).bluetoothDeviceDisconnected(context);
     }
 }

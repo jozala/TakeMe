@@ -21,5 +21,12 @@
         android:entries="@array/pref_non_default_notification_sound_entries"
         android:entryValues="@array/pref_non_default_notification_sound_values" />
 
+    <SwitchPreference
+        android:key="screen_notification_enabled"
+        android:title="@string/pref_title_screen_notification_enabled"
+        android:summaryOn="@string/pref_screen_notification_enabled_desc"
+        android:summaryOff="@string/pref_screen_notification_disabled_desc"
+        android:defaultValue="false" />
+
 
 </PreferenceScreen>
