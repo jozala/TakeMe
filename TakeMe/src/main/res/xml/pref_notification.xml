@@ -15,8 +15,8 @@
         android:defaultValue="false" />
 
     <ListPreference
-        android:dependency="non_default_notification_sound_enabled"
         android:key="non_default_notification_sound_value"
+        android:dependency="non_default_notification_sound_enabled"
         android:title="@string/pref_title_non_default_notification_sound_value"
         android:entries="@array/pref_non_default_notification_sound_entries"
         android:entryValues="@array/pref_non_default_notification_sound_values" />

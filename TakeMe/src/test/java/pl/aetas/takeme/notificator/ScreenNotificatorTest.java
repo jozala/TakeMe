@@ -13,7 +13,7 @@ import org.robolectric.annotation.Config;
 import pl.aetas.takeme.BuildConfig;
 
 import static org.fest.assertions.api.Assertions.assertThat;
-import static pl.aetas.takeme.notificator.ScreenNotificator.SCREEN_NOTIFICATION_ENABLED_KEY;
+import static pl.aetas.takeme.notificator.ScreenNotificator.SCREEN_NOTIFICATION_ENABLED_PREF_KEY;
 
 
 @RunWith(RobolectricTestRunner.class)
@@ -34,7 +34,7 @@ public class ScreenNotificatorTest {
     public void shouldBeInactiveWhenPropertyInSettingsIsSetToFalse() throws Exception {
         // given
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        sharedPref.edit().putBoolean(SCREEN_NOTIFICATION_ENABLED_KEY, false).commit();
+        sharedPref.edit().putBoolean(SCREEN_NOTIFICATION_ENABLED_PREF_KEY, false).commit();
         // when
         boolean active = screenNotificator.isActive(context);
         // then
@@ -45,7 +45,7 @@ public class ScreenNotificatorTest {
     public void shouldBeActiveWhenPropertyInSettingsIsSetToTrue() throws Exception {
         // given
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        sharedPref.edit().putBoolean(SCREEN_NOTIFICATION_ENABLED_KEY, true).commit();
+        sharedPref.edit().putBoolean(SCREEN_NOTIFICATION_ENABLED_PREF_KEY, true).commit();
         // when
         boolean active = screenNotificator.isActive(context);
         // then
