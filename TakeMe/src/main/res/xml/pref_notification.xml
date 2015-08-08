@@ -12,14 +12,15 @@
         android:title="@string/pref_title_non_default_notification_sound_enabled"
         android:summaryOn="@string/pref_non_default_notification_sound_enabled_desc"
         android:summaryOff="@string/pref_non_default_notification_sound_disabled_desc"
-        android:defaultValue="false" />
+        android:defaultValue="true" />
 
     <ListPreference
         android:key="non_default_notification_sound_value"
         android:dependency="non_default_notification_sound_enabled"
         android:title="@string/pref_title_non_default_notification_sound_value"
         android:entries="@array/pref_non_default_notification_sound_entries"
-        android:entryValues="@array/pref_non_default_notification_sound_values" />
+        android:entryValues="@array/pref_non_default_notification_sound_values"
+        android:defaultValue="android.resource://pl.aetas.takeme/raw/en_may_the_phone_be_with_you"/>
 
     <SwitchPreference
         android:key="screen_notification_enabled"
