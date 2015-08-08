@@ -4,8 +4,6 @@
     <!-- Strings related to Settings -->
     <string name="pref_header_general">General</string>
     <string name="pref_header_other">Other</string>
-
-    <!-- Example settings for Notifications -->
     <string name="pref_header_notifications">Notifications</string>
 
     <string name="pref_title_about">About TakeMe</string>
@@ -16,16 +14,12 @@
     <string name="pref_non_default_notification_sound_enabled_desc">Will use notification sound set below</string>
     <string name="pref_non_default_notification_sound_disabled_desc">Will use notification sound set above</string>
     <string-array name="pref_non_default_notification_sound_entries">
-        <item>Przytul</item>
-        <item>Wybierz Mnie</item>
         <item>I need a hug</item>
         <item>Pick Me</item>
         <item>Didn\'t you?</item>
         <item>May the phone</item>
     </string-array>
     <string-array name="pref_non_default_notification_sound_values">
-        <item>android.resource://pl.aetas.takeme/raw/pl_niech_mnie_ktos_przytuli</item>
-        <item>android.resource://pl.aetas.takeme/raw/pl_wybierz_mnie</item>
         <item>android.resource://pl.aetas.takeme/raw/en_i_need_a_hug</item>
         <item>android.resource://pl.aetas.takeme/raw/en_pick_me</item>
         <item>android.resource://pl.aetas.takeme/raw/en_didnt_you_forget_something</item>
