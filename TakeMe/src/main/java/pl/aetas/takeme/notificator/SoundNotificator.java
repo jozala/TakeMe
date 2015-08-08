@@ -9,6 +9,11 @@ import android.util.Log;
 public class SoundNotificator implements Notificator {
 
     @Override
+    public boolean isActive(Context context) {
+        return true;
+    }
+
+    @Override
     public void bluetoothDeviceDisconnected(Context context) {
 
         Log.i("pl.aetas.takeme.n.Sound", "Sound notifier received info about bluetooth device disconnected");

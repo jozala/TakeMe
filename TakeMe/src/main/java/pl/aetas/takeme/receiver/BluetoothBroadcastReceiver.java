@@ -36,7 +36,10 @@ public class BluetoothBroadcastReceiver extends BroadcastReceiver {
             Log.i("pl.aetas.takeme.r.BBR", "Bluetooth device disconnected");
 
             for (Notificator notificator : notificators) {
-                notificator.bluetoothDeviceDisconnected(context);
+                if (notificator.isActive(context)) {
+                    notificator.bluetoothDeviceDisconnected(context);
+                }
+
             }
         }
 
