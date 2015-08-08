@@ -16,17 +16,20 @@
     <string name="pref_non_default_notification_sound_enabled_desc">Will use notification sound set below</string>
     <string name="pref_non_default_notification_sound_disabled_desc">Will use notification sound set above</string>
     <string-array name="pref_non_default_notification_sound_entries">
-        <item>Notification sound 1</item>
-        <item>Notification sound 2</item>
-        <item>Notification sound 3</item>
+        <item>Przytul</item>
+        <item>I need a hug</item>
+        <item>Wybierz Mnie</item>
+        <item>Pick Me</item>
     </string-array>
     <string-array name="pref_non_default_notification_sound_values">
-        <item>sound_1</item>
-        <item>sound_2</item>
-        <item>sound_3</item>
+        <item>android.resource://pl.aetas.takeme/raw/pl_niech_mnie_ktos_przytuli</item>
+        <item>android.resource://pl.aetas.takeme/raw/en_i_need_a_hug</item>
+        <item>android.resource://pl.aetas.takeme/raw/pl_wybierz_mnie</item>
+        <item>android.resource://pl.aetas.takeme/raw/en_pick_me</item>
     </string-array>
     <string name="pref_title_screen_notification_enabled">Switch on screen as notification</string>
     <string name="pref_screen_notification_enabled_desc">Screen will be turned on for notification</string>
     <string name="pref_screen_notification_disabled_desc">Screen will NOT be turned on for notification</string>
+    <string name="pref_title_test_notifications">Test notifications</string>
 
 </resources>

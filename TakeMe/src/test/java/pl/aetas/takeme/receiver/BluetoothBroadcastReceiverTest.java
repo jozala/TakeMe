@@ -12,6 +12,7 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import pl.aetas.takeme.BuildConfig;
+import pl.aetas.takeme.broker.NotificationBroker;
 import pl.aetas.takeme.notificator.Notificator;
 
 import static org.mockito.Mockito.*;
@@ -39,7 +40,7 @@ public class BluetoothBroadcastReceiverTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        bluetoothBroadcastReceiver = new BluetoothBroadcastReceiver(notificator1);
+        bluetoothBroadcastReceiver = new BluetoothBroadcastReceiver(new NotificationBroker(notificator1));
 
         when(notificator1.isActive(Matchers.<Context>anyObject())).thenReturn(true);
         when(notificator2.isActive(Matchers.<Context>anyObject())).thenReturn(true);
@@ -59,7 +60,7 @@ public class BluetoothBroadcastReceiverTest {
     @Test
     public void shouldNotifyThroughAllRegisteredNotifiersWhenBluetoothDeviceIsDisconnected() {
         // given
-        bluetoothBroadcastReceiver = new BluetoothBroadcastReceiver(notificator1, notificator2);
+        bluetoothBroadcastReceiver = new BluetoothBroadcastReceiver(new NotificationBroker(notificator1, notificator2));
         when(intent.getAction()).thenReturn(BluetoothDevice.ACTION_ACL_DISCONNECTED);
         // when
         bluetoothBroadcastReceiver.onReceive(context, intent);
@@ -71,7 +72,7 @@ public class BluetoothBroadcastReceiverTest {
     @Test
     public void shouldNotifyThroughNotifiersWhichAreEnabledOnly() throws Exception {
         // given
-        bluetoothBroadcastReceiver = new BluetoothBroadcastReceiver(notificator1, notificatorDisabled);
+        bluetoothBroadcastReceiver = new BluetoothBroadcastReceiver(new NotificationBroker(notificator1, notificatorDisabled));
         when(intent.getAction()).thenReturn(BluetoothDevice.ACTION_ACL_DISCONNECTED);
         // when
         bluetoothBroadcastReceiver.onReceive(context, intent);

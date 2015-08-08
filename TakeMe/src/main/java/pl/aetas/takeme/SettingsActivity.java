@@ -8,17 +8,15 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.PreferenceActivity;
-import android.preference.PreferenceCategory;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
-import android.preference.RingtonePreference;
+import android.preference.*;
 import android.text.TextUtils;
-
+import pl.aetas.takeme.broker.NotificationBroker;
+import pl.aetas.takeme.broker.NotificationBrokerFactory;
 
 import java.util.List;
+
+import static pl.aetas.takeme.notificator.SoundNotificator.NON_DEFAULT_NOTIFICATION_SOUND_VALUE_PREF_KEY;
+import static pl.aetas.takeme.notificator.SoundNotificator.NOTIFICATION_SOUND_PREF_KEY;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -39,6 +37,8 @@ public class SettingsActivity extends PreferenceActivity {
      * shown on tablets.
      */
     private static final boolean ALWAYS_SIMPLE_PREFS = false;
+
+    public static final String TEST_NOTIFICATIONS_PREF_KEY = "test_notifications";
 
 
     @Override
@@ -79,7 +79,19 @@ public class SettingsActivity extends PreferenceActivity {
         // Bind the summaries of EditText/List/Dialog/Ringtone preferences to
         // their values. When their values change, their summaries are updated
         // to reflect the new value, per the Android Design guidelines.
-        bindPreferenceSummaryToValue(findPreference("notification_sound"));
+        bindPreferenceSummaryToValue(findPreference(NOTIFICATION_SOUND_PREF_KEY));
+        bindPreferenceSummaryToValue(findPreference(NON_DEFAULT_NOTIFICATION_SOUND_VALUE_PREF_KEY));
+
+        Preference preference = findPreference(TEST_NOTIFICATIONS_PREF_KEY);
+        preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                NotificationBroker notificationBroker = NotificationBrokerFactory.getNotificationBroker();
+                notificationBroker.bluetoothDeviceDisconnected(preference.getContext().getApplicationContext());
+                return true;
+            }
+        });
     }
 
     /**
@@ -224,7 +236,8 @@ public class SettingsActivity extends PreferenceActivity {
             // to their values. When their values change, their summaries are
             // updated to reflect the new value, per the Android Design
             // guidelines.
-            bindPreferenceSummaryToValue(findPreference("notification_sound"));
+            bindPreferenceSummaryToValue(findPreference(NOTIFICATION_SOUND_PREF_KEY));
+            bindPreferenceSummaryToValue(findPreference(NON_DEFAULT_NOTIFICATION_SOUND_VALUE_PREF_KEY));
         }
     }
 
@@ -235,9 +248,22 @@ public class SettingsActivity extends PreferenceActivity {
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class OtherPreferenceFragment extends PreferenceFragment {
         @Override
-        public void onCreate(Bundle savedInstanceState) {
+        public void onCreate(final Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref_other);
+
+            Preference preference = findPreference(TEST_NOTIFICATIONS_PREF_KEY);
+            preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    NotificationBroker notificationBroker = NotificationBrokerFactory.getNotificationBroker();
+                    notificationBroker.bluetoothDeviceDisconnected(preference.getContext().getApplicationContext());
+                    return true;
+                }
+            });
         }
+
+
     }
 }
