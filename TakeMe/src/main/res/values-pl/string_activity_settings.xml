@@ -10,7 +10,7 @@
     <string name="pref_ringtone_silent">Cisza</string>
     <string name="pref_screen_notification_disabled_desc">Ekran NIE zostanie włączony podczas powiadomienia</string>
     <string name="pref_screen_notification_enabled_desc">Ekran zostanie włączony podczas powiadomienia</string>
-    <string name="pref_title_about">O TakeMe</string>
+    <string name="pref_title_about">Informacje o TakeMe</string>
     <string name="pref_title_non_default_notification_sound_enabled">Użyj niestandardowych dźwięków powiadomień</string>
     <string name="pref_title_non_default_notification_sound_value">Wybierz niestandardowy dźwięk powiadomienia</string>
     <string name="pref_title_notification_sound">Wybierz dźwięk powiadomienia</string>

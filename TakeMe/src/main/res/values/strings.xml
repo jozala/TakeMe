@@ -4,5 +4,11 @@
     <string name="app_name" translatable="false">TakeMe</string>
     <string name="app_name_full" translatable="false">TakeMe with you!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_about">About TakeMe</string>
+    <string name="app_description">Never forget your phone from your car again.
+        \n\nIf you like the app - rate it.
+        \nFor support - write to takeme@aetas.pl
+        \n\nCreated by Mariusz Józala (Aetas).</string>
+
 
 </resources>

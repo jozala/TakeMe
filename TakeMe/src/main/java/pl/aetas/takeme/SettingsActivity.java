@@ -2,6 +2,7 @@ package pl.aetas.takeme;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -10,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.*;
 import android.text.TextUtils;
+import android.util.Log;
 import pl.aetas.takeme.broker.NotificationBroker;
 import pl.aetas.takeme.broker.NotificationBrokerFactory;
 
@@ -39,6 +41,7 @@ public class SettingsActivity extends PreferenceActivity {
     private static final boolean ALWAYS_SIMPLE_PREFS = false;
 
     public static final String TEST_NOTIFICATIONS_PREF_KEY = "test_notifications";
+    public static final String ABOUT_PREF_KEY = "about";
 
 
     @Override
@@ -89,6 +92,17 @@ public class SettingsActivity extends PreferenceActivity {
             public boolean onPreferenceClick(Preference preference) {
                 NotificationBroker notificationBroker = NotificationBrokerFactory.getNotificationBroker();
                 notificationBroker.bluetoothDeviceDisconnected(preference.getContext().getApplicationContext());
+                return true;
+            }
+        });
+
+        Preference aboutPreference = findPreference(ABOUT_PREF_KEY);
+        aboutPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Log.d("pl.aetas.takeme.SA", "SettingsActivity switching to AboutActivity");
+                Intent aboutActivity = new Intent(preference.getContext(), AboutActivity.class);
+                startActivity(aboutActivity);
                 return true;
             }
         });
@@ -259,6 +273,17 @@ public class SettingsActivity extends PreferenceActivity {
                 public boolean onPreferenceClick(Preference preference) {
                     NotificationBroker notificationBroker = NotificationBrokerFactory.getNotificationBroker();
                     notificationBroker.bluetoothDeviceDisconnected(preference.getContext().getApplicationContext());
+                    return true;
+                }
+            });
+
+            Preference aboutPreference = findPreference(ABOUT_PREF_KEY);
+            aboutPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    Log.d("pl.aetas.takeme.SA", "SettingsActivity switching to AboutActivity");
+                    Intent aboutActivity = new Intent(preference.getContext(), AboutActivity.class);
+                    startActivity(aboutActivity);
                     return true;
                 }
             });

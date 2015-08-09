@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="action_settings">Ustawienia</string>
+    <string name="action_settings">Ustawienia</string><string name="app_description">Nigdy więcej nie zapomnij swojego telefonu z auta.
+\n\nJeżeli ta aplikacja Ci się podoba - oceń ją na Google Play.
+\nJeśli trafisz na jakieś problemy - napisz do nas na adres takeme@aetas.pl
+\n\nAplikacja stworzona przez - Mariusz Józala (Aetas).</string>
+    <string name="title_activity_about">Info o TakeMe</string>
 </resources>
