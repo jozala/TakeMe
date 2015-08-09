@@ -2,6 +2,7 @@ package pl.aetas.takeme.notificator;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -22,5 +23,10 @@ public class ScreenNotificator implements Notificator {
 
         Toast.makeText(context, "Bluetooth device disconnected. Man, please TakeMe with you!",
                 Toast.LENGTH_LONG).show();
+
+        PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, "TAG");
+        wl.acquire();
+
     }
 }
