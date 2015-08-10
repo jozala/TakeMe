@@ -9,6 +9,11 @@
         \n\nIf you like the app - rate it.
         \nFor support - write to takeme@aetas.pl
         \n\nCreated by Mariusz Józala (Aetas).</string>
+    <string name="about_credits" translatable="false">Credits:
+        \nIcons used in the application and banner:
+        \n- Icon made by Freepik from www.flaticon.com is licensed under CC BY 3.0
+        \n- Icon made by Google from www.flaticon.com is licensed under CC BY 3.0
+    </string>
 
 
 </resources>
